@@ -3,6 +3,7 @@ package com.titannet.springboot.app.entity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -86,7 +87,10 @@ public class Cliente implements Serializable {
 		this.createAt = createAt;
 	}
 
-
+	@PrePersist	
+	public void prePersist() {
+		createAt=new Date();
+	}
 
 	private static final long serialVersionUID = 1L;
 
