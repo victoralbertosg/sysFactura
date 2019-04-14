@@ -18,9 +18,7 @@
 				<li class="nav-item active"><a class="nav-link" href="#">home</a></li>
 				<li class="nav-item"><a class="nav-link" href="#about"
 					th:href="@{/listar}">cliente</a></li>
-
 			</ul>
-
 		</div>
 	</nav>
 	<div class="container">
@@ -34,8 +32,9 @@
 					<th>id</th>
 					<th>nombre</th>
 					<th>apellido</th>
-					<th>email</th>
-					<th>fecha</th>
+					<th>EMAIL</th>
+					<th>FECHA</th>
+					<th>EDITAR</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -45,6 +44,8 @@
 					<td th:text="${cliente.apellido}"></td>
 					<td th:text="${cliente.email}"></td>
 					<td th:text="${cliente.createAt}"></td>
+					<td th:text="${cliente.createAt}"></td>
+					<td><a class="btn btn-primary btn-xs" th:href="@{/form/}+${cliente.id}" th:text="'editar'"></a></td>
 				</tr>
 			</tbody>
 		</table>

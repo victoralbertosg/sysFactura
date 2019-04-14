@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -35,5 +36,17 @@ public class ClienteController {
 	public String guardar(Cliente cliente) {
 		clienteDao.save(cliente);
 		return "redirect:listar";
+	}
+	@RequestMapping(value = "/form/{id}")
+	public String editar(@PathVariable(value="id") Long id, Map<String,Object> model) {
+		Cliente cliente=null;
+		if(id>0) {
+			cliente=clienteDao.findOne(id);			
+		}else {
+			return "redirect:/listar";
+		}
+		model.put ("cliente",cliente);
+		model.put("titulo","Editar Cliente");		
+		return "form";
 	}
 }
