@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,19 +15,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.titannet.springboot.app.dao.IClienteDao;
+import com.titannet.spring.app.service.IClienteService;
 import com.titannet.springboot.app.entity.Cliente;
 
 @Controller
 @SessionAttributes ("cliente")
 public class ClienteController {
-	@Autowired
-	private IClienteDao clienteDao;
+	
+	@Autowired(required=true)	
+	//@Qualifier("serviceDao")
+	private IClienteService clienteService;
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("titulo", "Listado de Clientes");
-		model.addAttribute("clientes", clienteDao.findAll());
+		model.addAttribute("clientes", clienteService.findAll());
 		return "listar";
 	}
 
@@ -44,7 +47,7 @@ public class ClienteController {
 			model.addAttribute("titulo","Formulario Cliente");
 			return "form";
 		}
-		clienteDao.save(cliente);
+		clienteService.save(cliente);
 		status.setComplete();
 		return "redirect:listar";
 	}
@@ -52,7 +55,7 @@ public class ClienteController {
 	public String editar(@PathVariable(value="id") Long id, Map<String,Object> model) {
 		Cliente cliente=null;
 		if(id>0) {
-			cliente=clienteDao.findOne(id);			
+			cliente=clienteService.findOne(id);			
 		}else {
 			return "redirect:/listar";
 		}
@@ -64,7 +67,7 @@ public class ClienteController {
 	@RequestMapping (value="/eliminar/{id}")
 	public String eliminar (@PathVariable(value="id") Long id) {
 		if (id>0) {
-			clienteDao.delete(id);
+			clienteService.delete(id);
 		}
 	return "redirect:/listar";	
 	}
