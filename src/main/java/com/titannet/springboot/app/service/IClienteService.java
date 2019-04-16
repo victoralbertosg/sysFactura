@@ -1,4 +1,4 @@
-package com.titannet.spring.app.service;
+package com.titannet.springboot.app.service;
 
 import java.util.List;
 

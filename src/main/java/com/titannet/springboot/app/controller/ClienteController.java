@@ -14,16 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-
-import com.titannet.spring.app.service.IClienteService;
 import com.titannet.springboot.app.entity.Cliente;
+import com.titannet.springboot.app.service.IClienteService;
 
 @Controller
 @SessionAttributes ("cliente")
 public class ClienteController {
 	
 	@Autowired(required=true)	
-	//@Qualifier("serviceDao")
+	//@Qualifier("clienteDao")
 	private IClienteService clienteService;
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)

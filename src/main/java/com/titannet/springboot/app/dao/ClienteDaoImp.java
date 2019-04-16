@@ -3,10 +3,13 @@ package com.titannet.springboot.app.dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import com.titannet.springboot.app.entity.Cliente;
 
 @Repository
+@Qualifier("clienteDao")
 public class ClienteDaoImp implements IClienteDao {
 
 	@PersistenceContext
