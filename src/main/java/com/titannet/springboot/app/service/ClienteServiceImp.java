@@ -1,6 +1,7 @@
 package com.titannet.springboot.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,7 +20,7 @@ public class ClienteServiceImp implements IClienteService{
 	@Override
 	@Transactional(readOnly=true)
 	public List<Cliente> findAll() {		
-		return clienteDao.findAll();
+		return (List<Cliente>) clienteDao.findAll();
 	}
 
 	@Override
@@ -28,15 +29,15 @@ public class ClienteServiceImp implements IClienteService{
 		clienteDao.save(cliente);
 	}
 
-	@Override
-	@Transactional(readOnly=true)
-	public Cliente findOne(Long id) {
-		return clienteDao.findOne(id);
-	}
 
 	@Override
 	@Transactional
 	public void delete(Long id) {
-		clienteDao.delete(id);
+		clienteDao.deleteById(id);
+	}
+
+	@Override
+	public Cliente findOne(Long id) {		
+		return  clienteDao.findById(id).get();		
 	}
 }
