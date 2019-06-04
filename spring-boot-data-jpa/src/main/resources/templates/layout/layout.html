@@ -4,7 +4,9 @@
 <meta charset="UTF-8" />
 <title th:text=${titulo}></title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+	th:href="@{/CSS/bootstrap.min.css}" />
+<link rel="stylesheet"
+	th:href="@{/CSS/jquery-ui.min.css}" />
 </head>
 <body>
 	<header th:fragment="header">
@@ -39,7 +41,11 @@
 		</p>
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 		<script
-			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+			th:src="@{js/jquery-3.4.1.min.js}"></script>
+			<script
+			th:src="@{js/bootstrap.min.js}"></script>
+			<script
+			th:src="@{js/jquery-ui.min.js}"></script>
 	</footer>
 </body>
 </html>
