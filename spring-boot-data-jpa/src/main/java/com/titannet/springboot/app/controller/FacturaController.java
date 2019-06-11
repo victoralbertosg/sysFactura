@@ -17,6 +17,8 @@ import com.titannet.springboot.app.entity.Factura;
 import com.titannet.springboot.app.entity.Producto;
 import com.titannet.springboot.app.service.IClienteService;
 
+
+
 @Controller
 @RequestMapping("/factura")
 @SessionAttributes("factura")
@@ -28,23 +30,26 @@ public class FacturaController {
 	@GetMapping("/form/{clienteId}")
 	public String crear(@PathVariable(value = "clienteId") Long clienteId, Map<String, Object> model,
 			RedirectAttributes flash) {
+
 		Cliente cliente = clienteService.findOne(clienteId);
+
 		if (cliente == null) {
-			flash.addFlashAttribute("error", "el cliente no existe");
+			flash.addFlashAttribute("error", "El cliente no existe en la base de datos");
 			return "redirect:/listar";
 		}
+
 		Factura factura = new Factura();
 		factura.setCliente(cliente);
+
 		model.put("factura", factura);
 		model.put("titulo", "Crear Factura");
+
 		return "factura/form";
 	}
-	
-	
+
 	@GetMapping(value = "/cargar-productos/{term}", produces = { "application/json" })
 	public @ResponseBody List<Producto> cargarProductos(@PathVariable String term) {
 		return clienteService.findByNombre(term);
 	}
 
-	
 }
