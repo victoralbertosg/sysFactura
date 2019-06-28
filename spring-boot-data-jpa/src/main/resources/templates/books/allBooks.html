@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout::head"></head>
+<body>
+	<header th:replace="layout/layout:: header"></header>
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>id</th>
+							<th>title</th>
+							<th>autor</th>
+							<th>CREAR FACTURA</th>
+							<th>EDITAR</th>
+							<th>ELIMINAR</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="book:${books}">
+							<td><a class="btn btn-primary btn-xs"
+								th:text="${book.id}"></a></td>
+							<td th:text="${book.title}"></td>
+							<td th:text="${book.autor}"></td>
+							<td><a class="btn btn-primary btn-xs" th:text="'editar'"></a></td>
+							<td><a class="btn btn-danger btn-xs"
+								onclick="return confirm('estas seguro de eliminar?');"></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout::footer"></footer>
+</body>
+</html>
