@@ -43,3 +43,10 @@ INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES(1, 1, 7);
 
 INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES('Factura Bicicleta', 'Alguna nota importante!', 1, NOW());
 INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES(3, 2, 6);
+
+
+INSERT INTO books (autor, title) VALUES('vallejo','los heraldos');
+INSERT INTO books (autor, title) VALUES('ricardo palma','piedras blancas');
+INSERT INTO books (autor, title) VALUES('llosa','pantaleon');
+INSERT INTO books (autor, title) VALUES('bayle','no se lo digas a nadie');
+INSERT INTO books (autor, title) VALUES('vallejo','los heraldos');

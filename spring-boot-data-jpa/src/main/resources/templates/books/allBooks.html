@@ -14,19 +14,19 @@
 							<th>id</th>
 							<th>title</th>
 							<th>autor</th>
-							<th>CREAR FACTURA</th>
+							<th>CREAR </th>
 							<th>EDITAR</th>
 							<th>ELIMINAR</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="book:${books}">
+						<tr th:each="book:${libros}">
 							<td><a class="btn btn-primary btn-xs"
 								th:text="${book.id}"></a></td>
 							<td th:text="${book.title}"></td>
 							<td th:text="${book.autor}"></td>
 							<td><a class="btn btn-primary btn-xs" th:text="'editar'"></a></td>
-							<td><a class="btn btn-danger btn-xs"
+							<td><a class="btn btn-danger btn-xs" th:text="'eliminar'"
 								onclick="return confirm('estas seguro de eliminar?');"></a></td>
 						</tr>
 					</tbody>
